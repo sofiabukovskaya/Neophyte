@@ -36,6 +36,7 @@ class SignInPage extends GetView<SignInController> {
                         child: Text(
                           'Forgot your Password?',
                           style: TextStyle(
+                              fontFamily: 'avenir',
                               decoration: TextDecoration.underline,
                               fontSize: 16,
                               color: Colors.grey.shade700),
@@ -47,6 +48,7 @@ class SignInPage extends GetView<SignInController> {
                         child: Text(
                           'Dont have an account?',
                           style: TextStyle(
+                              fontFamily: 'avenir',
                               decoration: TextDecoration.underline,
                               fontSize: 16,
                               color: Colors.grey.shade700),

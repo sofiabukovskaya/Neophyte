@@ -6,6 +6,7 @@ import '../bindings/splash_page_binding.dart';
 import '../ui/pages/sign_in_page/sign_in_page.dart';
 import '../ui/pages/sign_up_page/sign_up_page.dart';
 import '../ui/pages/splash_page/splash_page.dart';
+import '../utils/constants.dart';
 import 'app_routes.dart';
 
 class AppPages {
@@ -13,22 +14,22 @@ class AppPages {
 
   static final pages = [
     GetPage(
-      name: Routes.SPLASH,
-      page: () => SplashPage(),
-      binding: SplashPageBinding(),
-      transition: Transition.noTransition,
-    ),
+        name: Routes.SPLASH,
+        page: () => SplashPage(),
+        binding: SplashPageBinding(),
+        transition: Transition.noTransition,
+        transitionDuration: Constants.kDurationSpeed),
     GetPage(
-      name: Routes.SIGN_IN,
-      page: () => SignInPage(),
-      binding: SignInBinding(),
-      transition: Transition.noTransition,
-    ),
+        name: Routes.SIGN_IN,
+        page: () => SignInPage(),
+        binding: SignInBinding(),
+        transition: Transition.downToUp,
+        transitionDuration: Constants.kDurationSpeed),
     GetPage(
-      name: Routes.SIGN_UP,
-      page: () => SignUpPage(),
-      binding: SignUpBinding(),
-      transition: Transition.leftToRight,
-    ),
+        name: Routes.SIGN_UP,
+        page: () => SignUpPage(),
+        binding: SignUpBinding(),
+        transition: Transition.leftToRight,
+        transitionDuration: Constants.kDurationSpeed),
   ];
 }

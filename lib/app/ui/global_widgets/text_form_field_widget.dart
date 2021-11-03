@@ -25,7 +25,8 @@ class TextFormFieldWidget extends StatelessWidget {
             ),
             borderSide: BorderSide(color: Colors.grey.shade700, width: 0.7),
           ),
-          hintText: textFormHint),
+          hintText: textFormHint,
+          hintStyle: const TextStyle(fontFamily: 'avenir')),
     );
   }
 }

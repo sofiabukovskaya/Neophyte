@@ -6,4 +6,8 @@ class Constants {
   static const Color mainColor = Color(0xFF7F2DE7);
 
   static const Color mainLightColor = Color(0xFFBC96EC);
+
+  //Duration
+
+  static const Duration kDurationSpeed = Duration(milliseconds: 500);
 }

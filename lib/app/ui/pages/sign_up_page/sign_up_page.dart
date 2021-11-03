@@ -59,7 +59,7 @@ class SignUpPage extends GetView<SignUpController> {
                     ),
                     const SizedBox(width: 15),
                     const Text('I agree with Privacy Policy',
-                        style: TextStyle(fontSize: 16)),
+                        style: TextStyle(fontFamily: 'avenir', fontSize: 16)),
                   ],
                 ),
                 const SizedBox(height: 20),

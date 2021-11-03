@@ -29,7 +29,7 @@ class LinearButton extends StatelessWidget {
             child: Text(
               buttonTitle,
               textAlign: TextAlign.center,
-              style: const TextStyle(color: Colors.white),
+              style: const TextStyle(fontFamily: 'avenir', color: Colors.white),
             ),
           ),
         ),
