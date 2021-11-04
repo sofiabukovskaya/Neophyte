@@ -2,16 +2,18 @@ import 'package:flutter/material.dart';
 import '../../utils/constants.dart';
 
 class LinearButton extends StatelessWidget {
-  const LinearButton({Key? key, required this.buttonTitle}) : super(key: key);
+  const LinearButton({Key? key, required this.buttonTitle, required this.onTap})
+      : super(key: key);
 
   final String buttonTitle;
+  final VoidCallback onTap;
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 50.0,
       // ignore: deprecated_member_use
       child: RaisedButton(
-        onPressed: () {},
+        onPressed: onTap,
         shape:
             RoundedRectangleBorder(borderRadius: BorderRadius.circular(80.0)),
         padding: const EdgeInsets.all(0.0),

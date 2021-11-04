@@ -30,15 +30,33 @@ class SignUpPage extends GetView<SignUpController> {
                   height: 200.0,
                   width: 200.0,
                 ),
-                const TextFormFieldWidget(textFormHint: 'Name'),
+                TextFormFieldWidget(
+                  textFormHint: 'First name',
+                  textEditingController:
+                      controller.firstNameTextEditingController,
+                ),
                 const SizedBox(height: 15),
-                const TextFormFieldWidget(textFormHint: 'Email'),
+                TextFormFieldWidget(
+                    textFormHint: 'Last name',
+                    textEditingController:
+                        controller.lastNameTextEditingController),
                 const SizedBox(height: 15),
-                const TextFormFieldWidget(
-                    textFormHint: 'Password', isPassword: true),
+                TextFormFieldWidget(
+                    textFormHint: 'Email',
+                    textEditingController:
+                        controller.emailTextEditingController),
                 const SizedBox(height: 15),
-                const TextFormFieldWidget(
-                    textFormHint: 'Repeat password', isPassword: true),
+                TextFormFieldWidget(
+                    textFormHint: 'Password',
+                    isPassword: true,
+                    textEditingController:
+                        controller.passwordTextEditingController),
+                const SizedBox(height: 15),
+                TextFormFieldWidget(
+                    textFormHint: 'Repeat password',
+                    isPassword: true,
+                    textEditingController:
+                        controller.password2TextEditingController),
                 const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -63,7 +81,23 @@ class SignUpPage extends GetView<SignUpController> {
                   ],
                 ),
                 const SizedBox(height: 20),
-                const LinearButton(buttonTitle: 'CREATE ACCOUNT')
+                LinearButton(
+                  buttonTitle: 'CREATE ACCOUNT',
+                  onTap: () {
+                    controller.registerUser(
+                        controller.firstNameTextEditingController.text,
+                        controller.lastNameTextEditingController.text,
+                        controller.emailTextEditingController.text,
+                        controller.passwordTextEditingController.text,
+                        controller.password2TextEditingController.text);
+                    if (controller.isRegister!) {
+                      Get.snackbar('register successful',
+                          'Hi ${controller.firstNameTextEditingController.text}');
+                    } else {
+                      Get.snackbar('something go wrong', ':(');
+                    }
+                  },
+                )
               ],
             ),
           ),

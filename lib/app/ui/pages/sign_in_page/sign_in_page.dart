@@ -22,10 +22,16 @@ class SignInPage extends GetView<SignInController> {
                   height: 300.0,
                   width: 300.0,
                 ),
-                const TextFormFieldWidget(textFormHint: 'Email'),
+                TextFormFieldWidget(
+                    textFormHint: 'Email',
+                    textEditingController:
+                        controller.emailTextEditingController),
                 const SizedBox(height: 15),
-                const TextFormFieldWidget(
-                    textFormHint: 'Password', isPassword: true),
+                TextFormFieldWidget(
+                    textFormHint: 'Password',
+                    isPassword: true,
+                    textEditingController:
+                        controller.passwordTextEditingController),
                 const SizedBox(height: 15),
                 Padding(
                   padding: const EdgeInsets.only(left: 170),
@@ -58,7 +64,15 @@ class SignInPage extends GetView<SignInController> {
                   ),
                 ),
                 const SizedBox(height: 45),
-                const LinearButton(buttonTitle: 'SIGN IN')
+                LinearButton(
+                    buttonTitle: 'SIGN IN',
+                    onTap: () async {
+                      controller
+                          .signIn(controller.emailTextEditingController.text,
+                              controller.passwordTextEditingController.text)
+                          .whenComplete(() => Get.snackbar('Login successful',
+                              'Your access token ${controller.valueResult}'));
+                    })
               ],
             ),
           ),
