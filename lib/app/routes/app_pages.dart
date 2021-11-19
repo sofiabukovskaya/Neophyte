@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:neophyte/app/bindings/home_binding.dart';
+import 'package:neophyte/app/ui/pages/home_page/home_page.dart';
 
 import '../bindings/sign_in_binding.dart';
 import '../bindings/sign_up_binding.dart';
@@ -29,6 +31,12 @@ class AppPages {
         name: Routes.SIGN_UP,
         page: () => SignUpPage(),
         binding: SignUpBinding(),
+        transition: Transition.leftToRight,
+        transitionDuration: Constants.kDurationSpeed),
+    GetPage(
+        name: Routes.HOME,
+        page: () => HomePage(),
+        binding: HomeBindings(),
         transition: Transition.leftToRight,
         transitionDuration: Constants.kDurationSpeed),
   ];
