@@ -74,7 +74,6 @@ class SignInPage extends GetView<SignInController> {
                           .whenComplete(() {
                         Get.snackbar('Login successful',
                             'Your access token ${controller.valueResult}');
-
                       });
                     })
               ],

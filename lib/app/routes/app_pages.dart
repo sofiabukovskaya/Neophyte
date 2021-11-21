@@ -1,10 +1,10 @@
 import 'package:get/get.dart';
-import 'package:neophyte/app/bindings/home_binding.dart';
-import 'package:neophyte/app/ui/pages/home_page/home_page.dart';
 
+import '../bindings/home_binding.dart';
 import '../bindings/sign_in_binding.dart';
 import '../bindings/sign_up_binding.dart';
 import '../bindings/splash_page_binding.dart';
+import '../ui/pages/home_page/home_page.dart';
 import '../ui/pages/sign_in_page/sign_in_page.dart';
 import '../ui/pages/sign_up_page/sign_up_page.dart';
 import '../ui/pages/splash_page/splash_page.dart';
