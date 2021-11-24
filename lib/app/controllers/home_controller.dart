@@ -19,13 +19,14 @@ class HomeController extends GetxController {
   @override
   void onReady() {
     userService.getInfoUserService().then((value) => currentUser = value);
+    update();
     super.onReady();
   }
 
   @override
   void onInit() {
     userService.getInfoUserService().then((value) => currentUser = value);
-
+    update();
     super.onInit();
   }
 
