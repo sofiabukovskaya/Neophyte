@@ -8,12 +8,17 @@ class ImplRegisterService extends IRegisterService {
 
   @override
   void registerUser(String firstName, String lastName, String email,
-      String password, String password2) {
-    registerProvider.registerUserAPI(User(
+      String password, String password2, String gender, String company) {
+    registerProvider.registerUserAPI(
+      User(
         firstName: firstName,
         lastName: lastName,
         email: email,
         password: password,
-        password2: password2));
+        password2: password2,
+        company: company,
+        gender: gender,
+      ),
+    );
   }
 }

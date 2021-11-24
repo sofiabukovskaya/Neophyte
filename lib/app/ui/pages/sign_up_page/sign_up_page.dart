@@ -58,6 +58,16 @@ class SignUpPage extends GetView<SignUpController> {
                     textEditingController:
                         controller.password2TextEditingController),
                 const SizedBox(height: 15),
+                TextFormFieldWidget(
+                    textFormHint: 'Company',
+                    textEditingController:
+                        controller.companyTextEditingController),
+                const SizedBox(height: 15),
+                TextFormFieldWidget(
+                    textFormHint: 'Gender',
+                    textEditingController:
+                        controller.genderTextEditingController),
+                const SizedBox(height: 15),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -84,17 +94,34 @@ class SignUpPage extends GetView<SignUpController> {
                 LinearButton(
                   buttonTitle: 'CREATE ACCOUNT',
                   onTap: () {
-                    controller.registerUser(
+                    if (controller.firstNameTextEditingController.text.isNotEmpty &&
+                        controller
+                            .lastNameTextEditingController.text.isNotEmpty &&
+                        controller.emailTextEditingController.text.isNotEmpty &&
+                        controller
+                            .passwordTextEditingController.text.isNotEmpty &&
+                        controller
+                            .password2TextEditingController.text.isNotEmpty &&
+                        controller
+                            .genderTextEditingController.text.isNotEmpty &&
+                        controller
+                            .companyTextEditingController.text.isNotEmpty) {
+                      controller.registerUser(
                         controller.firstNameTextEditingController.text,
                         controller.lastNameTextEditingController.text,
                         controller.emailTextEditingController.text,
                         controller.passwordTextEditingController.text,
-                        controller.password2TextEditingController.text);
-                    if (controller.isRegister!) {
-                      Get.snackbar('register successful',
-                          'Hi ${controller.firstNameTextEditingController.text}');
-                    } else {
-                      Get.snackbar('something go wrong', ':(');
+                        controller.password2TextEditingController.text,
+                        controller.genderTextEditingController.text,
+                        controller.companyTextEditingController.text,
+                      );
+                      if (controller.isRegister!) {
+                        Get.snackbar('register successful',
+                            'Hi ${controller.firstNameTextEditingController
+                                .text}');
+                      } else {
+                        Get.snackbar('something go wrong', ':(');
+                      }
                     }
                   },
                 )

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:neophyte/app/routes/app_routes.dart';
 import '../data/services/interfaces/i_register_service.dart';
 
 class SignUpController extends GetxController {
@@ -14,19 +15,43 @@ class SignUpController extends GetxController {
   final emailTextEditingController = TextEditingController();
   final passwordTextEditingController = TextEditingController();
   final password2TextEditingController = TextEditingController();
+  final companyTextEditingController = TextEditingController();
+  final genderTextEditingController = TextEditingController();
 
   bool get checkBoxValue => _checkBoxValue.value;
 
   void changeCheckBoxValue(bool newValue) => _checkBoxValue.value = newValue;
 
-  registerUser(String firstName, String lastName, String email, String password,
-      String password2) {
+  registerUser(
+    String firstName,
+    String lastName,
+    String email,
+    String password,
+    String password2,
+    String gender,
+    String company,
+  ) {
     try {
       registerService.registerUser(
-          firstName, lastName, email, password, password2);
+        firstName,
+        lastName,
+        email,
+        password,
+        password2,
+        gender,
+        company,
+      );
+      Get.toNamed(Routes.HOME);
+      Get.snackbar('Login successful', 'Welcome! :)');
       isRegister = true;
     } catch (e) {
       isRegister = false;
+      Get.snackbar(
+        'Invalid Input Data',
+        'Check fields!!',
+        colorText: Colors.white,
+        backgroundColor: Colors.red,
+      );
     }
   }
 }
