@@ -36,7 +36,5 @@ class User {
         'email': email,
         'password': password,
         'password2': password2,
-        'company': company,
-        'gender': gender,
       };
 }
