@@ -7,6 +7,12 @@ class Constants {
 
   static const String kUrlLogin =
       'https://pacific-spire-69544.herokuapp.com/auth/login/';
+
+  static const String kUrlUserInfo =
+      'https://pacific-spire-69544.herokuapp.com/user/info/';
+
+  static const String kUrlRefreshToken =
+      'https://pacific-spire-69544.herokuapp.com/auth/login/refresh/';
   //Colors
 
   static const Color mainColor = Color(0xFF7F2DE7);

@@ -5,6 +5,7 @@ import 'package:get/get.dart';
 import '../../../controllers/home_controller.dart';
 import '../../../utils/constants.dart';
 import 'tabs/calendar_tab.dart';
+import 'tabs/profile_tab.dart';
 
 class HomePage extends GetView<HomeController> {
   @override
@@ -12,15 +13,14 @@ class HomePage extends GetView<HomeController> {
     return Obx(
       () => Scaffold(
           body: IndexedStack(
-            alignment: Alignment.topCenter,
             children: [
               const Center(
                 child: Text('Strings.month(1)'),
               ),
               CalendarTab(),
-              const Center(
-                child: Text('Strings.month(3)'),
-              ),
+              ProfileTab(
+                  logOut: () => controller.logoutFromSystem(),
+                  user: controller.currentUser)
             ],
             index: controller.currentIndex.value,
           ),
@@ -29,15 +29,18 @@ class HomePage extends GetView<HomeController> {
               items: [
                 BottomNavyBarItem(
                     icon: const Icon(Icons.article),
-                    title: const Text('CV'),
+                    title: const Text('CV',
+                        style: TextStyle(fontFamily: 'avenir', fontSize: 18)),
                     activeColor: Colors.white),
                 BottomNavyBarItem(
                     icon: const Icon(Icons.calendar_today),
-                    title: const Text('Calendar'),
+                    title: const Text('Calendar',
+                        style: TextStyle(fontFamily: 'avenir', fontSize: 18)),
                     activeColor: Colors.white),
                 BottomNavyBarItem(
                     icon: const Icon(Icons.person),
-                    title: const Text('Profile'),
+                    title: const Text('Profile',
+                        style: TextStyle(fontFamily: 'avenir', fontSize: 18)),
                     activeColor: Colors.white)
               ],
               onItemSelected: (index) => controller.changeIndex(index),

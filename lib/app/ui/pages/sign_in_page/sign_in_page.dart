@@ -67,13 +67,12 @@ class SignInPage extends GetView<SignInController> {
                 LinearButton(
                     buttonTitle: 'SIGN IN',
                     onTap: () async {
-                      Get.toNamed(Routes.HOME);
                       controller
                           .signIn(controller.emailTextEditingController.text,
                               controller.passwordTextEditingController.text)
                           .whenComplete(() {
-                        Get.snackbar('Login successful',
-                            'Your access token ${controller.valueResult}');
+                        Get.toNamed(Routes.HOME);
+                        Get.snackbar('Login successful', 'Welcome! :)');
                       });
                     })
               ],

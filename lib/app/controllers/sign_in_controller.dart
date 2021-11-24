@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../data/services/interfaces/i_login_service.dart';
 
 class SignInController extends GetxController {
@@ -14,5 +15,12 @@ class SignInController extends GetxController {
     await loginService.loginUser(email, password).then((value) {
       valueResult = value;
     });
+    await addTokenToSharedPreferences(valueResult!);
+  }
+
+  Future<void> addTokenToSharedPreferences(String accessToken) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    sharedPreferences.setString('accessToken', accessToken);
   }
 }

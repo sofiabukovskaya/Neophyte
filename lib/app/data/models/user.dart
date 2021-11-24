@@ -1,18 +1,22 @@
 class User {
   User(
-      {required this.firstName,
-      required this.lastName,
-      required this.email,
-      required this.password,
-      required this.password2,
-      this.accessToken});
+      {this.firstName,
+      this.lastName,
+      this.email,
+      this.password,
+      this.password2,
+      this.accessToken,
+      this.company,
+      this.gender});
 
-  String firstName;
-  String lastName;
-  String email;
-  String password;
-  String password2;
+  String? firstName;
+  String? lastName;
+  String? email;
+  String? password;
+  String? password2;
   String? accessToken;
+  String? company;
+  String? gender;
 
   // ignore: sort_constructors_first
   factory User.fromJson(Map<String, dynamic> json) => User(
@@ -21,7 +25,9 @@ class User {
       email: json['email'],
       password: json['password'],
       password2: json['password2'],
-      accessToken: json['access']);
+      accessToken: json['access'],
+      company: json['company'],
+      gender: json['gender']);
 
   Map<String, dynamic> toJson() => {
         'first_name': firstName,

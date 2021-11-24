@@ -1,4 +1,5 @@
 import 'package:get/get.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../data/services/implementation/impl_connection_service.dart';
 import '../routes/app_routes.dart';
@@ -15,11 +16,16 @@ class SplashPageController extends GetxController {
 
   @override
   void onReady() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String? accessToken = sharedPreferences.getString('accessToken');
     await Future.delayed(const Duration(seconds: 3));
     if (implConnectionService.connectionType == 0) {
       await Get.to(NoInternetConnectionPage());
     } else {
-      await Get.offAllNamed(Routes.SIGN_IN);
+      await accessToken == null
+          ? Get.offAllNamed(Routes.SIGN_IN)
+          : Get.offAllNamed(Routes.HOME);
     }
     super.onReady();
   }
