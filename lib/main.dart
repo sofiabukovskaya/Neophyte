@@ -6,6 +6,8 @@ import 'app/routes/app_routes.dart';
 import 'injection_container.dart' as di;
 
 Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
   await Future.wait([
     di.init(),
   ]);
