@@ -10,22 +10,23 @@ import '../routes/app_routes.dart';
 class HomeController extends GetxController {
   final userService = Get.find<IUserInfoService>();
 
-  final currentIndex = 0.obs;
-
+  final currentIndex = 1.obs;
   User? currentUser;
 
   void changeIndex(int newIndex) => currentIndex.value = newIndex;
 
   @override
-  void onReady() {
+  void onReady() async {
     userService.getInfoUserService().then((value) => currentUser = value);
+
     update();
     super.onReady();
   }
 
   @override
-  void onInit() {
-    userService.getInfoUserService().then((value) => currentUser = value);
+  void onInit() async {
+    await userService.getInfoUserService().then((value) => currentUser = value);
+
     update();
     super.onInit();
   }

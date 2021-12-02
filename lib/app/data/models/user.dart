@@ -19,6 +19,7 @@ class User {
   String? company;
   String? gender;
 
+  // ignore: sort_constructors_first
   factory User.fromJson(Map<String, dynamic> json) => User(
         firstName: json['first_name'],
         lastName: json['last_name'],

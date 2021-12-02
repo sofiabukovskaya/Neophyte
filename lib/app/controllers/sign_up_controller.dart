@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:neophyte/app/routes/app_routes.dart';
+
 import '../data/services/interfaces/i_register_service.dart';
+import '../routes/app_routes.dart';
 
 class SignUpController extends GetxController {
   final registerService = Get.find<IRegisterService>();
