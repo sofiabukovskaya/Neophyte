@@ -11,8 +11,70 @@ class CvTab extends GetView<CvTabController> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: const Center(
-        child: Text(''), //later replace for list
+      resizeToAvoidBottomInset: false,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(height: 30),
+            ListView.builder(
+              itemBuilder: (context, index) {
+                return Card(
+                  shape: RoundedRectangleBorder(
+                    side: BorderSide(
+                        color: Constants.mainColor.withOpacity(0.4), width: 2),
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: ListTile(
+                    title: Row(
+                      children: [
+                        Text(
+                          cvTabController.candidatesList[index].firstName,
+                          style: const TextStyle(
+                              fontFamily: 'avenir',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(width: 15),
+                        Text(
+                          cvTabController.candidatesList[index].lastName,
+                          style: const TextStyle(
+                              fontFamily: 'avenir',
+                              fontSize: 20,
+                              fontWeight: FontWeight.w700),
+                        ),
+                      ],
+                    ),
+                    subtitle: Padding(
+                      padding: const EdgeInsets.only(top: 5),
+                      child: Text(cvTabController.candidatesList[index].email),
+                    ),
+                    trailing: SizedBox(
+                      height: 20,
+                      width: 130,
+                      child: Row(
+                        children: [
+                          const Text('Vacancy: ',
+                              style: TextStyle(
+                                  fontFamily: 'avenir',
+                                  fontWeight: FontWeight.w500)),
+                          const SizedBox(width: 5),
+                          Text(
+                              cvTabController.vacanciesList
+                                  .elementAt(cvTabController
+                                      .candidatesList[index].vacancy!)
+                                  .name,
+                              style: const TextStyle(fontFamily: 'avenir')),
+                        ],
+                      ),
+                    ),
+                  ),
+                );
+              },
+              itemCount: cvTabController.candidatesList.length,
+              shrinkWrap: true,
+            )
+          ],
+        ),
       ),
       floatingActionButton: FloatingActionButton(
           onPressed: () {
@@ -24,114 +86,139 @@ class CvTab extends GetView<CvTabController> {
                       content: SizedBox(
                         height: 350,
                         width: 400,
-                        child: Column(
-                          children: [
-                            TextFormField(
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5),
-                                      width: 2.0),
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                hintText: 'Email',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5)),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5),
-                                      width: 2.0),
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                hintText: 'First name',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5)),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5),
+                                        width: 2.0),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  hintText: 'Email',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5)),
+                                  ),
                                 ),
                               ),
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5),
-                                      width: 2.0),
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                hintText: 'Last name',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5)),
-                                ),
-                              ),
-                            ),
-                            const SizedBox(height: 10),
-                            Row(
-                              children: [
-                                const SizedBox(width: 2),
-                                const Text('Cv file:',
-                                    style: TextStyle(fontFamily: 'avenir')),
-                                const SizedBox(width: 10),
-                                TextButton(
-                                    onPressed: () => controller.pickFile(),
-                                    child: const Text('Choose file',
-                                        style: TextStyle(
-                                            fontFamily: 'avenir',
-                                            color: Colors.white)),
-                                    style: ButtonStyle(
-                                        backgroundColor:
-                                            MaterialStateProperty.all(
-                                                Colors.grey.shade500))),
-                                const SizedBox(width: 5),
-                                Text(
-                                    controller.fileName == null
-                                        ? 'picked file name'
-                                        : controller.fileName!,
-                                    style:
-                                        const TextStyle(fontFamily: 'avenir'))
-                              ],
-                            ),
-                            const SizedBox(height: 10),
-                            TextFormField(
-                              decoration: InputDecoration(
-                                fillColor: Colors.white,
-                                focusedBorder: OutlineInputBorder(
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5),
-                                      width: 2.0),
-                                  borderRadius: BorderRadius.circular(15.0),
-                                ),
-                                hintText: 'Vacancies',
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(15.0),
-                                  borderSide: BorderSide(
-                                      color:
-                                          Constants.mainColor.withOpacity(0.5)),
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5),
+                                        width: 2.0),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  hintText: 'First name',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5)),
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                              const SizedBox(height: 10),
+                              TextFormField(
+                                decoration: InputDecoration(
+                                  fillColor: Colors.white,
+                                  focusedBorder: OutlineInputBorder(
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5),
+                                        width: 2.0),
+                                    borderRadius: BorderRadius.circular(15.0),
+                                  ),
+                                  hintText: 'Last name',
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(15.0),
+                                    borderSide: BorderSide(
+                                        color: Constants.mainColor
+                                            .withOpacity(0.5)),
+                                  ),
+                                ),
+                              ),
+                              const SizedBox(height: 10),
+                              Row(
+                                children: [
+                                  const SizedBox(width: 2),
+                                  const Text('Cv file:',
+                                      style: TextStyle(fontFamily: 'avenir')),
+                                  const SizedBox(width: 10),
+                                  TextButton(
+                                      onPressed: () => controller.pickFile(),
+                                      child: const Text('Choose file',
+                                          style: TextStyle(
+                                              fontFamily: 'avenir',
+                                              color: Colors.white)),
+                                      style: ButtonStyle(
+                                          backgroundColor:
+                                              MaterialStateProperty.all(
+                                                  Colors.grey.shade500))),
+                                  const SizedBox(width: 5),
+                                  GetBuilder<CvTabController>(
+                                      builder: (c) => Expanded(
+                                            child: Text(
+                                                c.fileName == null
+                                                    ? 'picked file name'
+                                                    : c.fileName!,
+                                                overflow: TextOverflow.ellipsis,
+                                                style: const TextStyle(
+                                                    fontFamily: 'avenir')),
+                                          ))
+                                ],
+                              ),
+                              const SizedBox(height: 30),
+                              const Text('Select a vacancy:',
+                                  style: TextStyle(fontFamily: 'avenir')),
+                              const SizedBox(height: 10),
+                              StatefulBuilder(builder:
+                                  (BuildContext context, StateSetter setState) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(right: 80),
+                                  child: SizedBox(
+                                    width: 200,
+                                    child: DropdownButton<String>(
+                                      value: cvTabController.firstValue.value,
+                                      icon: const Icon(Icons.arrow_drop_down),
+                                      iconSize: 30,
+                                      elevation: 16,
+                                      style: const TextStyle(
+                                          fontFamily: 'avenir',
+                                          color: Colors.black87),
+                                      underline: Container(),
+                                      onChanged: (newValue) {
+                                        setState(() {
+                                          cvTabController.firstValue.value =
+                                              newValue!;
+                                        });
+                                      },
+                                      items: cvTabController.nameVacancies
+                                          .map<DropdownMenuItem<String>>(
+                                              (String value) {
+                                        return DropdownMenuItem<String>(
+                                          value: value,
+                                          child: Text(value,
+                                              style: const TextStyle(
+                                                  fontFamily: 'avenir')),
+                                        );
+                                      }).toList(),
+                                    ),
+                                  ),
+                                );
+                              })
+                            ],
+                          ),
                         ),
                       ),
                       actions: [
