@@ -1,4 +1,6 @@
 import 'package:get/get.dart';
+import 'package:neophyte/app/bindings/cv_binding.dart';
+import 'package:neophyte/app/ui/pages/cv_page/cv_page.dart';
 
 import '../bindings/home_binding.dart';
 import '../bindings/sign_in_binding.dart';
@@ -34,9 +36,15 @@ class AppPages {
         transition: Transition.leftToRight,
         transitionDuration: Constants.kDurationSpeed),
     GetPage(
-        name: Routes.HOME,
+        name: Routes.CV,
         page: () => HomePage(),
         binding: HomeBindings(),
+        transition: Transition.leftToRight,
+        transitionDuration: Constants.kDurationSpeed),
+    GetPage(
+        name: Routes.HOME,
+        page: () => CvPage(),
+        binding: CvBindings(),
         transition: Transition.leftToRight,
         transitionDuration: Constants.kDurationSpeed),
   ];

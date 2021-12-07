@@ -29,4 +29,14 @@ class Candidates {
         'sv_file': cvFile,
         'vacancy': vacancy
       };
+
+  // ignore: sort_constructors_first
+  factory Candidates.test() {
+    return Candidates(
+      firstName: 'Daria',
+      lastName: 'Koshkina',
+      email: 'test@gmail.com',
+      vacancy: 2,
+    );
+  }
 }
