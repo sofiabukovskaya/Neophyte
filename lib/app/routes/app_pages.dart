@@ -36,13 +36,13 @@ class AppPages {
         transition: Transition.leftToRight,
         transitionDuration: Constants.kDurationSpeed),
     GetPage(
-        name: Routes.CV,
+        name: Routes.HOME,
         page: () => HomePage(),
         binding: HomeBindings(),
         transition: Transition.leftToRight,
         transitionDuration: Constants.kDurationSpeed),
     GetPage(
-        name: Routes.HOME,
+        name: Routes.CV,
         page: () => CvPage(),
         binding: CvBindings(),
         transition: Transition.leftToRight,

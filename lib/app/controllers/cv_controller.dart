@@ -5,7 +5,7 @@ import '../data/models/vacancies.dart';
 import '../data/providers/interfaces/i_vacancies_provider.dart';
 
 class CvController extends GetxController {
-  final candidate = Candidates.test();
+  final candidate = Get.arguments as Candidates;
   final vacanciesProvider = Get.find<IVacanciesProvider>();
 
   List<Vacancies> vacanciesList = [];
@@ -23,5 +23,4 @@ class CvController extends GetxController {
     vacancy.value = nameVacancies[candidate.vacancy ?? 0];
     super.onInit();
   }
-
 }

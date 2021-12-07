@@ -1,18 +1,34 @@
+import 'dart:convert';
 import 'dart:io';
+
+import 'dart:typed_data';
+
+import 'package:path_provider/path_provider.dart';
 
 class Candidates {
   Candidates(
       {required this.firstName,
       required this.lastName,
       required this.email,
+      this.file,
       this.cvFile,
       this.vacancy});
 
   final String firstName;
   final String lastName;
   final String email;
-  final File? cvFile;
+  final File? file;
+  final String? cvFile;
   final int? vacancy;
+
+  Future<void> createFile() async {
+    Uint8List bytes = base64.decode(cvFile ?? '');
+    String dir = (await getApplicationDocumentsDirectory()).path;
+    File file = File(
+      "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf",
+    );
+    await file.writeAsBytes(bytes);
+  }
 
   // ignore: sort_constructors_first
   factory Candidates.fromJson(Map<String, dynamic> json) => Candidates(
