@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:neophyte/app/routes/app_routes.dart';
 
 import '../../../../controllers/cv_tab_controller.dart';
 import '../../../../utils/constants.dart';
@@ -19,53 +20,59 @@ class CvTab extends GetView<CvTabController> {
             const SizedBox(height: 30),
             ListView.builder(
               itemBuilder: (context, index) {
-                return Card(
-                  shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                        color: Constants.mainColor.withOpacity(0.4), width: 2),
-                    borderRadius: BorderRadius.circular(12),
-                  ),
-                  child: ListTile(
-                    title: Row(
-                      children: [
-                        Text(
-                          cvTabController.candidatesList[index].firstName,
-                          style: const TextStyle(
-                              fontFamily: 'avenir',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
-                        ),
-                        const SizedBox(width: 15),
-                        Text(
-                          cvTabController.candidatesList[index].lastName,
-                          style: const TextStyle(
-                              fontFamily: 'avenir',
-                              fontSize: 20,
-                              fontWeight: FontWeight.w700),
-                        ),
-                      ],
+                return GestureDetector(
+                  onTap: () => Get.toNamed(Routes.CV,
+                      arguments: cvTabController.candidatesList[index]),
+                  child: Card(
+                    shape: RoundedRectangleBorder(
+                      side: BorderSide(
+                          color: Constants.mainColor.withOpacity(0.4),
+                          width: 2),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                    subtitle: Padding(
-                      padding: const EdgeInsets.only(top: 5),
-                      child: Text(cvTabController.candidatesList[index].email),
-                    ),
-                    trailing: SizedBox(
-                      height: 20,
-                      width: 130,
-                      child: Row(
+                    child: ListTile(
+                      title: Row(
                         children: [
-                          const Text('Vacancy: ',
-                              style: TextStyle(
-                                  fontFamily: 'avenir',
-                                  fontWeight: FontWeight.w500)),
-                          const SizedBox(width: 5),
                           Text(
-                              cvTabController.vacanciesList
-                                  .elementAt(cvTabController
-                                      .candidatesList[index].vacancy!)
-                                  .name,
-                              style: const TextStyle(fontFamily: 'avenir')),
+                            cvTabController.candidatesList[index].firstName,
+                            style: const TextStyle(
+                                fontFamily: 'avenir',
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(width: 15),
+                          Text(
+                            cvTabController.candidatesList[index].lastName,
+                            style: const TextStyle(
+                                fontFamily: 'avenir',
+                                fontSize: 20,
+                                fontWeight: FontWeight.w700),
+                          ),
                         ],
+                      ),
+                      subtitle: Padding(
+                        padding: const EdgeInsets.only(top: 5),
+                        child:
+                            Text(cvTabController.candidatesList[index].email),
+                      ),
+                      trailing: SizedBox(
+                        height: 20,
+                        width: 130,
+                        child: Row(
+                          children: [
+                            const Text('Vacancy: ',
+                                style: TextStyle(
+                                    fontFamily: 'avenir',
+                                    fontWeight: FontWeight.w500)),
+                            const SizedBox(width: 5),
+                            Text(
+                                cvTabController.vacanciesList
+                                    .elementAt(cvTabController
+                                        .candidatesList[index].vacancy!)
+                                    .name,
+                                style: const TextStyle(fontFamily: 'avenir')),
+                          ],
+                        ),
                       ),
                     ),
                   ),

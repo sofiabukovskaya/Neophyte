@@ -46,18 +46,25 @@ class CvPage extends GetView<CvController> {
                 const Spacer(),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 24.0),
-                  child: Card(
-                    shape: RoundedRectangleBorder(
-                      side: BorderSide(
-                          color: Constants.mainColor.withOpacity(0.4),
-                          width: 2),
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                    child: const ListTile(
-                      trailing: Icon(Icons.download_sharp, color: Colors.black),
-                      title: Text(
-                        'Download CV',
-                        style: s22BlackW600,
+                  child: GestureDetector(
+                    onTap: () {
+                      // controller.candidate.createFile();
+                       Get.snackbar('Download successful', 'Good! :)');
+                    },
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        side: BorderSide(
+                            color: Constants.mainColor.withOpacity(0.4),
+                            width: 2),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: const ListTile(
+                        trailing:
+                            Icon(Icons.download_sharp, color: Colors.black),
+                        title: Text(
+                          'Download CV',
+                          style: s22BlackW600,
+                        ),
                       ),
                     ),
                   ),
