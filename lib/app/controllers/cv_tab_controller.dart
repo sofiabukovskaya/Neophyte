@@ -41,6 +41,19 @@ class CvTabController extends GetxController {
     }
   }
 
+  Future<void> sendCandidates(Candidates candidates) async {
+    await cvProvider.postCandidates(candidates);
+
+    await vacanciesProvider
+        .listVacancies()
+        .then((value) => vacanciesList = value);
+    nameVacancies = vacanciesList.map((e) => e.name).toList();
+    nameVacancies = nameVacancies.toSet().toList(); //remove duplicates
+    firstValue = nameVacancies.first.obs;
+
+    await cvProvider.listCandidates().then((value) => candidatesList = value);
+  }
+
   void updateDropDownMenu(String newValue) {
     firstValue.value = newValue;
     update();
