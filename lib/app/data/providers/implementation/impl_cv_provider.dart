@@ -11,6 +11,33 @@ class ImplCvProvider extends ICVProvider {
   static var client = http.Client();
   List<Candidates> candidates = [];
 
+  Future<void> postCandidates(Candidates candidates) async {
+    final Map<String, dynamic> data = {
+      'first_name': candidates.firstName,
+      'last_name': candidates.lastName,
+      'email': candidates.email,
+      'vacancy': candidates.vacancy.toString(),
+    };
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String? accessToken = sharedPreferences.getString('accessToken');
+    try {
+      final http.Response response = await client.post(
+        Uri.parse(Constants.kUrlPostCandidate),
+        body: data,
+        headers: {
+          "Authorization": "Bearer " + accessToken!,
+        },
+      );
+      if (response.statusCode == 201) {
+        print('201 OK');
+      }
+      print(response.statusCode);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
   @override
   Future<List<Candidates>> listCandidates() async {
     final SharedPreferences sharedPreferences =
