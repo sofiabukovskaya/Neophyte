@@ -13,7 +13,7 @@ class InterviewInfoDialog extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         ListView.builder(
-          padding: const EdgeInsets.only(top: 20.0,bottom: 40.0),
+          padding: const EdgeInsets.only(top: 20.0, bottom: 40.0),
           shrinkWrap: true,
           itemCount: meetings.length,
           itemBuilder: (_, index) {

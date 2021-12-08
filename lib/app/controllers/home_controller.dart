@@ -17,16 +17,15 @@ class HomeController extends GetxController {
   void changeIndex(int newIndex) => currentIndex.value = newIndex;
 
   @override
-  void onReady() {
-    userService.getInfoUserService().then((value) => currentUser = value);
+  void onReady() async {
+    await userService.getInfoUserService().then((value) => currentUser = value);
     update();
     super.onReady();
   }
 
   @override
-  void onInit() {
-    userService.getInfoUserService().then((value) => currentUser = value);
-    update();
+  void onInit() async {
+    await userService.getInfoUserService().then((value) => currentUser = value);
     super.onInit();
   }
 

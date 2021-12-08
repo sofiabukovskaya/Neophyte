@@ -24,7 +24,7 @@ class _CalendarTabState extends State<CalendarTab> {
                     e.from.day == details.date?.day,
               )
               .toList()
-              .isNotEmpty){
+              .isNotEmpty) {
             showBottomSheet(
               context: context,
               builder: (context) => InterviewInfoDialog(
@@ -39,7 +39,6 @@ class _CalendarTabState extends State<CalendarTab> {
               ),
             );
           }
-
         },
         dataSource: MeetingDataSource(_getDataSource()),
         view: CalendarView.month,
