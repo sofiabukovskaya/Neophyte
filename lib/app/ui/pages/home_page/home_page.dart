@@ -19,9 +19,7 @@ class HomePage extends GetView<HomeController> {
             children: [
               CvTab(cvTabController: Get.put(CvTabController())),
               CalendarTab(),
-              ProfileTab(
-                  logOut: () => controller.logoutFromSystem(),
-                  user: controller.currentUser)
+              ProfileTab(logOut: () => controller.logoutFromSystem())
             ],
             index: controller.currentIndex.value,
           ),

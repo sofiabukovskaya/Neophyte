@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:neophyte/app/ui/global_widgets/interview_info_dialog.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../global_widgets/interview_info_dialog.dart';
 
 class CalendarTab extends StatefulWidget {
   @override
