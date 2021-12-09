@@ -117,8 +117,7 @@ class SignUpPage extends GetView<SignUpController> {
                       );
                       if (controller.isRegister!) {
                         Get.snackbar('register successful',
-                            'Hi ${controller.firstNameTextEditingController
-                                .text}');
+                            'Hi ${controller.firstNameTextEditingController.text}');
                       } else {
                         Get.snackbar('something go wrong', ':(');
                       }

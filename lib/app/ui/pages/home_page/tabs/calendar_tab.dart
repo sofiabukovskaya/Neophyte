@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:neophyte/app/ui/global_widgets/interview_info_dialog.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../../../utils/constants.dart';
+import '../../../global_widgets/interview_info_dialog.dart';
 
 class CalendarTab extends StatefulWidget {
   @override
@@ -24,7 +24,7 @@ class _CalendarTabState extends State<CalendarTab> {
                     e.from.day == details.date?.day,
               )
               .toList()
-              .isNotEmpty){
+              .isNotEmpty) {
             showBottomSheet(
               context: context,
               builder: (context) => InterviewInfoDialog(
@@ -39,7 +39,6 @@ class _CalendarTabState extends State<CalendarTab> {
               ),
             );
           }
-
         },
         dataSource: MeetingDataSource(_getDataSource()),
         view: CalendarView.month,

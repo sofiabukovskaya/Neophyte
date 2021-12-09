@@ -14,13 +14,12 @@ class HomePage extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Obx(
       () => Scaffold(
+          resizeToAvoidBottomInset: false,
           body: IndexedStack(
             children: [
               CvTab(cvTabController: Get.put(CvTabController())),
               CalendarTab(),
-              ProfileTab(
-                  logOut: () => controller.logoutFromSystem(),
-                  user: controller.currentUser)
+              ProfileTab(logOut: () => controller.logoutFromSystem())
             ],
             index: controller.currentIndex.value,
           ),

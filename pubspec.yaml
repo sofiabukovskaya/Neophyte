@@ -20,6 +20,7 @@ dependencies:
   table_calendar: ^3.0.3
   syncfusion_flutter_calendar: ^19.3.54
   file_picker: ^4.2.4
+  jwt_decode: ^0.3.1
 
 dev_dependencies:
   flutter_test:
