@@ -16,6 +16,10 @@ class Constants {
 
   static const String kUrlUpdateUserInfo =
       'https://pacific-spire-69544.herokuapp.com/users/';
+
+  static const String kUrlInterview =
+      'https://pacific-spire-69544.herokuapp.com/interviews/';
+
   //Colors
 
   static const Color mainColor = Color(0xFF7F2DE7);

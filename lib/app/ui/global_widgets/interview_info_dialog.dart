@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import '../pages/home_page/tabs/calendar_tab.dart';
+import 'package:url_launcher/url_launcher.dart';
+
+import '../../controllers/calendar_controller.dart';
 
 class InterviewInfoDialog extends StatelessWidget {
   const InterviewInfoDialog({Key? key, required this.meetings})
@@ -17,14 +19,41 @@ class InterviewInfoDialog extends StatelessWidget {
           shrinkWrap: true,
           itemCount: meetings.length,
           itemBuilder: (_, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Column(
-                children: [
-                  Text(meetings[index].eventName),
-                  const SizedBox(height: 10.0),
-                  Text(meetings[index].from.toString()),
-                ],
+            return Card(
+              shape: RoundedRectangleBorder(
+                  side: BorderSide(color: Colors.amber.shade100, width: 2.0),
+                  borderRadius: BorderRadius.circular(4.0)),
+              elevation: 2,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Column(
+                  children: [
+                    Text(meetings[index].eventName,
+                        style: const TextStyle(
+                            fontFamily: 'avenir', fontSize: 16)),
+                    const SizedBox(height: 10.0),
+                    Text(meetings[index].from.toString(),
+                        style: const TextStyle(
+                            fontFamily: 'avenir', fontSize: 16)),
+                    const SizedBox(height: 10.0),
+                    const Text(
+                      'Link meeting: ',
+                      style: TextStyle(fontFamily: 'avenir', fontSize: 16),
+                    ),
+                    const SizedBox(height: 10.0),
+                    InkWell(
+                      onTap: () => launch(meetings[index].link),
+                      child: Text(meetings[index].link,
+                          overflow: TextOverflow.visible,
+                          maxLines: 2,
+                          style: const TextStyle(
+                              fontFamily: 'avenir',
+                              decoration: TextDecoration.underline,
+                              color: Colors.blue,
+                              fontSize: 16)),
+                    )
+                  ],
+                ),
               ),
             );
           },
