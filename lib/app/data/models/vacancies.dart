@@ -1,7 +1,11 @@
 class Vacancies {
   Vacancies(
-      {required this.name, required this.description, required this.keyWords});
+      {required this.name,
+      required this.description,
+      required this.keyWords,
+      required this.id});
 
+  final int id;
   final String name;
   final String description;
   final String keyWords;
@@ -9,6 +13,7 @@ class Vacancies {
   // ignore: sort_constructors_first
   factory Vacancies.fromJson(Map<String, dynamic> json) => Vacancies(
       name: json['name'],
+      id: json['id'],
       description: json['description'],
       keyWords: json['key_words']);
 

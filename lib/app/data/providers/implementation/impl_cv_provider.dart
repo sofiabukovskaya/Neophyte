@@ -5,6 +5,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../utils/constants.dart';
 import '../../models/candidates.dart';
+import '../../models/interview.dart';
 import '../interfaces/i_cv_provider.dart';
 
 class ImplCvProvider extends ICVProvider {
@@ -25,6 +26,27 @@ class ImplCvProvider extends ICVProvider {
       final http.Response response = await client.post(
         Uri.parse(Constants.kUrlPostCandidate),
         body: data,
+        headers: {
+          "Authorization": "Bearer " + accessToken!,
+        },
+      );
+      if (response.statusCode == 201) {
+        print('201 OK');
+      }
+      print(response.statusCode);
+    } catch (e) {
+      print(e.toString());
+    }
+  }
+
+  Future<void> postInterview(Interview interview) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String? accessToken = sharedPreferences.getString('accessToken');
+    try {
+      final http.Response response = await client.post(
+        Uri.parse(Constants.kUrlPostInterview),
+        body: interview.toJson(),
         headers: {
           "Authorization": "Bearer " + accessToken!,
         },

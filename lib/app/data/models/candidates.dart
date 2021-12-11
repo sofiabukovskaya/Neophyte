@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:io';
-
 import 'dart:typed_data';
 
 import 'package:path_provider/path_provider.dart';
@@ -10,6 +9,7 @@ class Candidates {
       {required this.firstName,
       required this.lastName,
       required this.email,
+      this.id,
       this.file,
       this.cvFile,
       this.vacancy});
@@ -20,6 +20,7 @@ class Candidates {
   final File? file;
   final String? cvFile;
   final int? vacancy;
+  final int? id;
 
   Future<void> createFile() async {
     Uint8List bytes = base64.decode(cvFile ?? '');
@@ -33,6 +34,7 @@ class Candidates {
   // ignore: sort_constructors_first
   factory Candidates.fromJson(Map<String, dynamic> json) => Candidates(
       firstName: json['first_name'],
+      id: json['id'],
       lastName: json['last_name'],
       email: json['email'],
       cvFile: json['sv_file'],
@@ -45,14 +47,4 @@ class Candidates {
         'sv_file': cvFile,
         'vacancy': vacancy
       };
-
-  // ignore: sort_constructors_first
-  factory Candidates.test() {
-    return Candidates(
-      firstName: 'Daria',
-      lastName: 'Koshkina',
-      email: 'test@gmail.com',
-      vacancy: 2,
-    );
-  }
 }
