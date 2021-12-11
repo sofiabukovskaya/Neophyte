@@ -124,6 +124,7 @@ class Meeting {
   // ignore: sort_constructors_first
   Meeting(this.eventName, this.from, this.to, this.background, this.isAllDay);
 
+  // ignore: sort_constructors_first
   factory Meeting.test(int day) {
     return Meeting(
       'Daria Koshkina',
