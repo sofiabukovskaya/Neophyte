@@ -24,6 +24,7 @@ class CvTab extends GetView<CvTabController> {
           children: [
             const SizedBox(height: 30),
             ListView.builder(
+              itemCount: cvTabController.candidatesList.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () => Get.toNamed(
@@ -72,12 +73,19 @@ class CvTab extends GetView<CvTabController> {
                                     fontFamily: 'avenir',
                                     fontWeight: FontWeight.w500)),
                             const SizedBox(width: 5),
-                            Text(
+                            Expanded(
+                              child: Text(
                                 cvTabController.vacanciesList
-                                    .elementAt(cvTabController
-                                        .candidatesList[index].vacancy!)
+                                    .firstWhere((element) =>
+                                        element.id ==
+                                        cvTabController.candidatesList[index].vacancy)
                                     .name,
-                                style: const TextStyle(fontFamily: 'avenir')),
+                                style: const TextStyle(
+                                  fontFamily: 'avenir',
+                                ),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
                           ],
                         ),
                       ),
@@ -85,7 +93,6 @@ class CvTab extends GetView<CvTabController> {
                   ),
                 );
               },
-              itemCount: cvTabController.candidatesList.length,
               shrinkWrap: true,
             )
           ],
@@ -216,14 +223,18 @@ class CvTab extends GetView<CvTabController> {
                                 },
                                 items: cvTabController.nameVacancies
                                     .map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                  return DropdownMenuItem<String>(
-                                    value: value,
-                                    child: Text(value,
+                                  (String value) {
+                                    return DropdownMenuItem<String>(
+                                      value: value,
+                                      child: Text(
+                                        value,
                                         style: const TextStyle(
-                                            fontFamily: 'avenir')),
-                                  );
-                                }).toList(),
+                                          fontFamily: 'avenir',
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ).toList(),
                               ),
                             ),
                           );

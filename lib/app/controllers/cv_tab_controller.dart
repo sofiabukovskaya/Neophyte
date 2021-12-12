@@ -29,6 +29,7 @@ class CvTabController extends GetxController {
     firstValue = nameVacancies.first.obs;
 
     await cvProvider.listCandidates().then((value) => candidatesList = value);
+    update();
     super.onInit();
   }
 
