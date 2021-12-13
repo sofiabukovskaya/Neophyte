@@ -29,22 +29,25 @@ class CalendarTab extends StatelessWidget {
                         context: context,
                         builder: (context) => AlertDialog(
                               content: SizedBox(
-                                height: 250,
+                                height: 300,
                                 width: 200,
                                 child: SingleChildScrollView(
                                   child: InterviewInfoDialog(
-                                    meetings: controller
-                                        .getDataSource()
-                                        .where(
-                                          (e) =>
-                                              e.from.year ==
-                                                  details.date?.year &&
-                                              e.from.month ==
-                                                  details.date?.month &&
-                                              e.from.day == details.date?.day,
-                                        )
-                                        .toList(),
-                                  ),
+                                      meetings: controller
+                                          .getDataSource()
+                                          .where(
+                                            (e) =>
+                                                e.from.year ==
+                                                    details.date?.year &&
+                                                e.from.month ==
+                                                    details.date?.month &&
+                                                e.from.day == details.date?.day,
+                                          )
+                                          .toList(),
+                                      updateMeeting: (int id, String link,
+                                              DateTime data, int candidateId) =>
+                                          controller.updateMeeting(
+                                              id, link, data, candidateId)),
                                 ),
                               ),
                               actions: <Widget>[
@@ -54,7 +57,7 @@ class CalendarTab extends StatelessWidget {
                                   onPressed: () {
                                     Get.back();
                                   },
-                                )
+                                ),
                               ],
                             ));
                   }

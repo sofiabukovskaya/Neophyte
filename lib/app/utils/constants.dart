@@ -20,7 +20,6 @@ class Constants {
   static const String kUrlCandidate =
       'https://pacific-spire-69544.herokuapp.com/candidates/';
 
-
   static const String kUrlUpdateUserInfo =
       'https://pacific-spire-69544.herokuapp.com/users/';
   static const String kUrlPostCandidate =
@@ -28,7 +27,6 @@ class Constants {
 
   static const String kUrlPostInterview =
       'https://pacific-spire-69544.herokuapp.com/interviews/';
-
 
   static const String kUrlInterview =
       'https://pacific-spire-69544.herokuapp.com/interviews/';

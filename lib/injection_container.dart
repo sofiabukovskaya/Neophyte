@@ -36,7 +36,7 @@ Future<void> init() async {
     ..lazyPut<ILoginProvider>(() => ImplLoginProvider())
     ..lazyPut<IUserInfo>(() => ImplUserInfoProvider())
     ..lazyPut<IVacanciesProvider>(() => ImplVacanciesProvider())
-    ..lazyPut<ICVProvider>(() => ImplCvProvider());
+    ..lazyPut<ICVProvider>(() => ImplCvProvider())
     ..lazyPut<IUserInfo>(() => ImplUserInfoProvider())
     ..lazyPut<IInterviewProvider>(() => ImplInterviewProvider());
 }

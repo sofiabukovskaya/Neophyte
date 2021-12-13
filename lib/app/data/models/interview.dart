@@ -1,14 +1,14 @@
 class Interview {
   Interview(
-      {required this.id,
+      {this.id,
       required this.candidateId,
       required this.interviewTime,
-      required this.link});
+      this.link});
 
-  final int id;
+  int? id;
   final int candidateId;
   final String interviewTime;
-  final String link;
+  String? link;
 
   // ignore: sort_constructors_first
   factory Interview.fromJson(Map<String, dynamic> json) => Interview(

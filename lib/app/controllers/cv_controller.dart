@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
-import 'package:neophyte/app/data/models/interview.dart';
-import 'package:neophyte/app/data/providers/interfaces/i_cv_provider.dart';
 
 import '../data/models/candidates.dart';
+import '../data/models/interview.dart';
 import '../data/models/vacancies.dart';
+import '../data/providers/interfaces/i_cv_provider.dart';
 import '../data/providers/interfaces/i_vacancies_provider.dart';
 
 class CvController extends GetxController {
@@ -32,8 +32,8 @@ class CvController extends GetxController {
 
   Future<void> sendInterview(String link) async {
     final interview = Interview(
-      candidate: candidate.id!,
-      datetime: dateInteview.value,
+      candidateId: candidate.id!,
+      interviewTime: dateInteview.value,
       link: link,
     );
     await cvProvider.postInterview(interview);
