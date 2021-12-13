@@ -78,7 +78,8 @@ class CvTab extends GetView<CvTabController> {
                                 cvTabController.vacanciesList
                                     .firstWhere((element) =>
                                         element.id ==
-                                        cvTabController.candidatesList[index].vacancy)
+                                        cvTabController
+                                            .candidatesList[index].vacancy)
                                     .name,
                                 style: const TextStyle(
                                   fontFamily: 'avenir',

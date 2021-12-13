@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 class Constants {
   //URL
@@ -20,13 +20,15 @@ class Constants {
   static const String kUrlCandidate =
       'https://pacific-spire-69544.herokuapp.com/candidates/';
 
-
   static const String kUrlUpdateUserInfo =
       'https://pacific-spire-69544.herokuapp.com/users/';
   static const String kUrlPostCandidate =
       'https://pacific-spire-69544.herokuapp.com/candidates/';
 
   static const String kUrlPostInterview =
+      'https://pacific-spire-69544.herokuapp.com/interviews/';
+
+  static const String kUrlInterview =
       'https://pacific-spire-69544.herokuapp.com/interviews/';
 
   //Colors

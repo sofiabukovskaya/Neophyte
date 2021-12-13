@@ -23,9 +23,9 @@ class Candidates {
   final int? id;
 
   Future<void> createFile() async {
-    Uint8List bytes = base64.decode(cvFile ?? '');
-    String dir = (await getApplicationDocumentsDirectory()).path;
-    File file = File(
+    final Uint8List bytes = base64.decode(cvFile ?? '');
+    final String dir = (await getApplicationDocumentsDirectory()).path;
+    final File file = File(
       "$dir/" + DateTime.now().millisecondsSinceEpoch.toString() + ".pdf",
     );
     await file.writeAsBytes(bytes);
