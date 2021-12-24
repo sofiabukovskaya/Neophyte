@@ -96,4 +96,20 @@ class ImplCvProvider extends ICVProvider {
     await sharedPreferences.setString('accessToken', result);
     await listCandidates();
   }
+
+  @override
+  Future<void> deleteCandidate(int id) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String? accessToken = sharedPreferences.getString('accessToken');
+
+    final http.Response response = await client
+        .delete(Uri.parse(Constants.kUrlCandidate + '$id/'), headers: {
+      "Content-Type": "application/json",
+      "Authorization": "Bearer " + accessToken!,
+    });
+    if (response.statusCode == 403) {
+      await refreshTokenAPI();
+    }
+  }
 }
