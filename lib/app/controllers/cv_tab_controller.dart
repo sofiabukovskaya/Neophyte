@@ -60,4 +60,10 @@ class CvTabController extends GetxController {
     firstValue.value = newValue;
     update();
   }
+
+  void deleteCandidate(Candidates candidate, int index) async {
+    await cvProvider.deleteCandidate(candidate.id!);
+    candidatesList.removeAt(index);
+    refresh();
+  }
 }

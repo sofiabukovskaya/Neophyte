@@ -7,4 +7,6 @@ abstract class ICVProvider {
   Future<void> postCandidates(Candidates candidates);
 
   Future<void> postInterview(Interview interview);
+
+  Future<void> deleteCandidate(int id);
 }
