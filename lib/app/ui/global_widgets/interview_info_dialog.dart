@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
 import 'package:get/get.dart';
+import 'package:neophyte/app/data/providers/notification_service.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 import '../../controllers/calendar_controller.dart';
@@ -15,11 +16,14 @@ class InterviewInfoDialog extends StatefulWidget {
   final Function(int, String, DateTime, int) updateMeeting;
   String? updatedLinkText;
   DateTime? currentData;
+
   @override
   State<InterviewInfoDialog> createState() => _InterviewInfoDialogState();
 }
 
 class _InterviewInfoDialogState extends State<InterviewInfoDialog> {
+  final ns = NotificationService();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -166,6 +170,10 @@ class _InterviewInfoDialogState extends State<InterviewInfoDialog> {
                                                   widget.currentData!,
                                                   widget.meetings[index]
                                                       .candidateId!);
+                                              ns.showNotifications(
+                                                'Date was Update',
+                                                'Metting date was update now!!}',
+                                              );
                                             },
                                           )
                                         ],

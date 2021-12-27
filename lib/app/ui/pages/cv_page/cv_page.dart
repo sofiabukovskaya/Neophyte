@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:neophyte/app/data/providers/notification_service.dart';
 
 import '../../../controllers/cv_controller.dart';
 import '../../../utils/constants.dart';
@@ -11,6 +12,8 @@ class CvPage extends GetView<CvController> {
 
   final linkController = TextEditingController();
   final dateController = TextEditingController();
+
+  final ns = NotificationService();
 
   @override
   Widget build(BuildContext context) {
@@ -187,6 +190,15 @@ class CvPage extends GetView<CvController> {
                               TextButton(
                                 onPressed: () {
                                   controller.sendInterview(linkController.text);
+                                  ns.scheduleNotifications(
+                                    title: 'TIME TO METTING',
+                                    body: 'Metting with'
+                                        ' ${controller.candidate.firstName}'
+                                        ' ${controller.candidate.lastName}',
+                                    time: DateTime.parse(
+                                      controller.dateInteview.value,
+                                    ).difference(DateTime.now()),
+                                  );
                                   Navigator.pop(context);
                                 },
                                 child: const Text(
