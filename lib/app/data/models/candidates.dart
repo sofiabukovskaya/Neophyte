@@ -12,7 +12,8 @@ class Candidates {
       this.id,
       this.file,
       this.cvFile,
-      this.vacancy});
+      this.vacancy,
+      this.vacancyName});
 
   final String firstName;
   final String lastName;
@@ -21,6 +22,7 @@ class Candidates {
   final String? cvFile;
   final int? vacancy;
   final int? id;
+  final String? vacancyName;
 
   Future<void> createFile() async {
     final Uint8List bytes = base64.decode(cvFile ?? '');
