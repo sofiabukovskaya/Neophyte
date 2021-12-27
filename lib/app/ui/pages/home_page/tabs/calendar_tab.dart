@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../../data/providers/notification_service.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../../../../controllers/calendar_controller.dart';
@@ -7,6 +8,8 @@ import '../../../../utils/constants.dart';
 import '../../../global_widgets/interview_info_dialog.dart';
 
 class CalendarTab extends StatelessWidget {
+  final ns = NotificationService();
+
   @override
   Widget build(BuildContext context) {
     return GetBuilder<CalendarControllerGetx>(
@@ -33,21 +36,22 @@ class CalendarTab extends StatelessWidget {
                                 width: 200,
                                 child: SingleChildScrollView(
                                   child: InterviewInfoDialog(
-                                      meetings: controller
-                                          .getDataSource()
-                                          .where(
-                                            (e) =>
-                                                e.from.year ==
-                                                    details.date?.year &&
-                                                e.from.month ==
-                                                    details.date?.month &&
-                                                e.from.day == details.date?.day,
-                                          )
-                                          .toList(),
-                                      updateMeeting: (int id, String link,
-                                              DateTime data, int candidateId) =>
-                                          controller.updateMeeting(
-                                              id, link, data, candidateId)),
+                                    meetings: controller
+                                        .getDataSource()
+                                        .where(
+                                          (e) =>
+                                              e.from.year ==
+                                                  details.date?.year &&
+                                              e.from.month ==
+                                                  details.date?.month &&
+                                              e.from.day == details.date?.day,
+                                        )
+                                        .toList(),
+                                    updateMeeting: (int id, String link,
+                                            DateTime data, int candidateId) =>
+                                        controller.updateMeeting(
+                                            id, link, data, candidateId),
+                                  ),
                                 ),
                               ),
                               actions: <Widget>[
