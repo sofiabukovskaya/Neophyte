@@ -24,14 +24,40 @@ class CvTab extends GetView<CvTabController> {
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 30),
+                    const SizedBox(height: 35),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 20),
+                      child: TextFormField(
+                        controller: controller.searchController,
+                        onChanged: controller.onItemChanged,
+                        decoration: InputDecoration(
+                          hintText: 'Search',
+                            prefixIcon: const Icon(Icons.search, color: Colors.grey,),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: const BorderSide(
+                              color: Colors.blueGrey,
+                              width: 1.0
+                            ),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                            borderSide: const BorderSide(
+                              color: Colors.blueGrey,
+                              width: 1.0,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 7),
                     ListView.builder(
-                      itemCount: cvTabController.candidatesList.length,
+                      itemCount: cvTabController.searchList.length,
                       itemBuilder: (context, index) {
                         return GestureDetector(
                           onTap: () => Get.toNamed(
                             Routes.CV,
-                            arguments: cvTabController.candidatesList[index],
+                            arguments: cvTabController.searchList[index],
                           ),
                           child: Card(
                             shape: RoundedRectangleBorder(
@@ -49,7 +75,7 @@ class CvTab extends GetView<CvTabController> {
                                     onPressed: (context) =>
                                         controller.deleteCandidate(
                                             cvTabController
-                                                .candidatesList[index],
+                                                .searchList[index],
                                             index),
                                     backgroundColor: const Color(0xFFFE4A49),
                                     foregroundColor: Colors.white,
@@ -63,7 +89,7 @@ class CvTab extends GetView<CvTabController> {
                                   children: [
                                     Text(
                                       cvTabController
-                                          .candidatesList[index].firstName,
+                                          .searchList[index].firstName,
                                       style: const TextStyle(
                                           fontFamily: 'avenir',
                                           fontSize: 20,
@@ -72,7 +98,7 @@ class CvTab extends GetView<CvTabController> {
                                     const SizedBox(width: 15),
                                     Text(
                                       cvTabController
-                                          .candidatesList[index].lastName,
+                                          .searchList[index].lastName,
                                       style: const TextStyle(
                                           fontFamily: 'avenir',
                                           fontSize: 20,
@@ -83,7 +109,7 @@ class CvTab extends GetView<CvTabController> {
                                 subtitle: Padding(
                                   padding: const EdgeInsets.only(top: 5),
                                   child: Text(cvTabController
-                                      .candidatesList[index].email),
+                                      .searchList[index].email),
                                 ),
                                 trailing: SizedBox(
                                   height: 20,
