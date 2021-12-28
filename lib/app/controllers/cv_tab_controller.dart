@@ -50,7 +50,6 @@ class CvTabController extends GetxController {
   }
 
   void onItemChanged(String value) {
-
     searchList = candidatesList
         .where((string) =>
             (string.firstName.toLowerCase().contains(value.toLowerCase()) ||
@@ -70,7 +69,8 @@ class CvTabController extends GetxController {
     nameVacancies = nameVacancies.toSet().toList(); //remove duplicates
     firstValue = nameVacancies.first.obs;
 
-    await cvProvider.listCandidates().then((value) => candidatesList = value);
+    await cvProvider.listCandidates().then((value) => searchList = value);
+    refresh();
     update();
   }
 
@@ -81,7 +81,7 @@ class CvTabController extends GetxController {
 
   void deleteCandidate(Candidates candidate, int index) async {
     await cvProvider.deleteCandidate(candidate.id!);
-    candidatesList.removeAt(index);
+    searchList.removeAt(index);
     refresh();
   }
 }

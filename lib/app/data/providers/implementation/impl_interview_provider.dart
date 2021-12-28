@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import 'package:http/http.dart' as http;
+import 'package:neophyte/app/data/models/result_AI.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../../utils/constants.dart';
@@ -11,6 +12,7 @@ import '../interfaces/i_interview_provider.dart';
 class ImplInterviewProvider extends IInterviewProvider {
   static var client = http.Client();
   List<Interview> interviews = [];
+  late ResultAi resultAi;
 
   @override
   Future<List<Interview>> getListInterviews() async {
@@ -99,5 +101,30 @@ class ImplInterviewProvider extends IInterviewProvider {
     final json = jsonDecode(refreshTokenRequest.body);
     final result = json['access'];
     sharedPreferences.setString('accessToken', result);
+  }
+
+  @override
+  Future<ResultAi> getResultAI(int id) async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    final String? accessToken = sharedPreferences.getString('accessToken');
+
+    try {
+      final http.Response response = await client
+          .get(Uri.parse(Constants.kUrlInterview + '$id/result/'), headers: {
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + accessToken!,
+      });
+      if (response.statusCode == 200 && response.body != '{}') {
+        resultAi = ResultAi.fromJson(json.decode(response.body));
+      } else if (response.statusCode == 200 && response.body == '{}') {
+        resultAi = ResultAi(
+            faceIsnTDetected: null, happy: null, neutral: null, sad: null);
+      }
+      return resultAi;
+    } catch (e) {
+      print(e.toString());
+      return Future.error(e.toString());
+    }
   }
 }

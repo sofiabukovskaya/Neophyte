@@ -10,7 +10,8 @@ import 'injection_container.dart' as di;
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings ('ic_launcher');
+  final AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('ic_launcher');
 
   await Future.wait([
     di.init(),

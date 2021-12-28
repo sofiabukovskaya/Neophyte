@@ -24,7 +24,7 @@ class CvTab extends GetView<CvTabController> {
               body: SingleChildScrollView(
                 child: Column(
                   children: [
-                    const SizedBox(height: 35),
+                    const SizedBox(height: 45),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: TextFormField(
@@ -32,13 +32,14 @@ class CvTab extends GetView<CvTabController> {
                         onChanged: controller.onItemChanged,
                         decoration: InputDecoration(
                           hintText: 'Search',
-                            prefixIcon: const Icon(Icons.search, color: Colors.grey,),
+                          prefixIcon: const Icon(
+                            Icons.search,
+                            color: Colors.grey,
+                          ),
                           focusedBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
                             borderSide: const BorderSide(
-                              color: Colors.blueGrey,
-                              width: 1.0
-                            ),
+                                color: Colors.blueGrey, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(12.0),
@@ -50,7 +51,7 @@ class CvTab extends GetView<CvTabController> {
                         ),
                       ),
                     ),
-                    const SizedBox(height: 7),
+                    const SizedBox(height: 3),
                     ListView.builder(
                       itemCount: cvTabController.searchList.length,
                       itemBuilder: (context, index) {
@@ -74,8 +75,7 @@ class CvTab extends GetView<CvTabController> {
                                   SlidableAction(
                                     onPressed: (context) =>
                                         controller.deleteCandidate(
-                                            cvTabController
-                                                .searchList[index],
+                                            cvTabController.searchList[index],
                                             index),
                                     backgroundColor: const Color(0xFFFE4A49),
                                     foregroundColor: Colors.white,
@@ -108,8 +108,8 @@ class CvTab extends GetView<CvTabController> {
                                 ),
                                 subtitle: Padding(
                                   padding: const EdgeInsets.only(top: 5),
-                                  child: Text(cvTabController
-                                      .searchList[index].email),
+                                  child: Text(
+                                      cvTabController.searchList[index].email),
                                 ),
                                 trailing: SizedBox(
                                   height: 20,
