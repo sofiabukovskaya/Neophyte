@@ -3,33 +3,33 @@ import 'package:flutter/cupertino.dart';
 class Constants {
   //URL
   static const String kUrlRegister =
-      'https://pacific-spire-69544.herokuapp.com/auth/register/';
+      'http://f37b-159-224-64-142.ngrok.io/auth/register/';
 
   static const String kUrlLogin =
-      'https://pacific-spire-69544.herokuapp.com/auth/login/';
+      'http://f37b-159-224-64-142.ngrok.io/auth/login/';
 
   static const String kUrlUserInfo =
-      'https://pacific-spire-69544.herokuapp.com/user/info/';
+      'http://f37b-159-224-64-142.ngrok.io/user/info/';
 
   static const String kUrlRefreshToken =
-      'https://pacific-spire-69544.herokuapp.com/auth/login/refresh/';
+      'http://f37b-159-224-64-142.ngrok.io/auth/login/refresh/';
 
   static const String kUrlVacancies =
-      'https://pacific-spire-69544.herokuapp.com/vacancies/';
+      'http://f37b-159-224-64-142.ngrok.io/vacancies/';
 
   static const String kUrlCandidate =
-      'https://pacific-spire-69544.herokuapp.com/candidates/';
+      'http://f37b-159-224-64-142.ngrok.io/candidates/';
 
   static const String kUrlUpdateUserInfo =
-      'https://pacific-spire-69544.herokuapp.com/users/';
+      'http://f37b-159-224-64-142.ngrok.io/users/';
   static const String kUrlPostCandidate =
-      'https://pacific-spire-69544.herokuapp.com/candidates/';
+      'http://f37b-159-224-64-142.ngrok.io/candidates/';
 
   static const String kUrlPostInterview =
-      'https://pacific-spire-69544.herokuapp.com/interviews/';
+      'http://f37b-159-224-64-142.ngrok.io/interviews/';
 
   static const String kUrlInterview =
-      'https://pacific-spire-69544.herokuapp.com/interviews/';
+      'http://f37b-159-224-64-142.ngrok.io/interviews/';
 
   //Colors
 

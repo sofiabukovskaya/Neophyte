@@ -28,11 +28,13 @@ class CalendarTab extends StatelessWidget {
                       )
                       .toList()
                       .isNotEmpty) {
+                    controller.getResultAI(
+                        controller.getDataSource().map((e) => e.id!).first);
                     showDialog(
                         context: context,
                         builder: (context) => AlertDialog(
                               content: SizedBox(
-                                height: 300,
+                                height: 400,
                                 width: 200,
                                 child: SingleChildScrollView(
                                   child: InterviewInfoDialog(

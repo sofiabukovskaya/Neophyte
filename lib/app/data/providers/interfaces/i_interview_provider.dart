@@ -1,3 +1,5 @@
+import 'package:neophyte/app/data/models/result_AI.dart';
+
 import '../../models/interview.dart';
 
 abstract class IInterviewProvider {
@@ -7,4 +9,6 @@ abstract class IInterviewProvider {
 
   Future<bool> updateInterview(
       int id, String link, DateTime dateTime, int candidateId);
+
+  Future<ResultAi> getResultAI(int id);
 }

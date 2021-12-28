@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:neophyte/app/data/models/result_AI.dart';
 import 'package:syncfusion_flutter_calendar/calendar.dart';
 
 import '../data/models/interview.dart';
@@ -11,6 +12,7 @@ class CalendarControllerGetx extends GetxController {
   List<Interview> interviews = [];
   final interviewProvider = Get.find<IInterviewProvider>();
   String nameCandidate = '';
+  ResultAi? resultAi;
 
   void onInit() async {
     super.onInit();
@@ -23,6 +25,7 @@ class CalendarControllerGetx extends GetxController {
     final List<Meeting> meetings = [];
 
     for (Interview interview in interviews) {
+      getResultAI(interview.id!);
       meetings.add(Meeting(
           interview.id,
           interview.candidateId,
@@ -32,9 +35,15 @@ class CalendarControllerGetx extends GetxController {
           DateTime(2021, 11, 1, 10, 0),
           interview.link,
           const Color(0xFF0F8644),
-          true));
+          true,
+          resultAi));
     }
+
     return meetings;
+  }
+
+  Future<void> getResultAI(int id) async {
+    await interviewProvider.getResultAI(id).then((value) => resultAi = value);
   }
 
   void updateMeeting(
@@ -164,22 +173,9 @@ class Meeting {
   String? link;
   Color background;
   bool isAllDay;
+  ResultAi? resultAi;
 
   // ignore: sort_constructors_first
   Meeting(this.id, this.candidateId, this.eventName, this.from, this.to,
-      this.link, this.background, this.isAllDay);
-
-  // ignore: sort_constructors_first
-  factory Meeting.test(int day) {
-    return Meeting(
-      1,
-      12,
-      'Daria Koshkina',
-      DateTime(2021, 11, day, 9, 0),
-      DateTime(2021, 11, day, 10, 0),
-      'example.com',
-      const Color(0xFF0F8644),
-      true,
-    );
-  }
+      this.link, this.background, this.isAllDay, this.resultAi);
 }
